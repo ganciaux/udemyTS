@@ -9,7 +9,12 @@ const body_parser_1 = require("body-parser");
 const todos_1 = __importDefault(require("./routes/todos"));
 const app = express_1.default();
 app.use(body_parser_1.json());
-app.use('todos', todos_1.default);
+app.use((req, res, next) => {
+    const requestTime = new Date().toISOString();
+    console.log(requestTime);
+    next();
+});
+app.use('/todos', todos_1.default);
 app.use((err, req, res, next) => {
     console.log('Error...');
     res.status(500).json({ message: err.message });

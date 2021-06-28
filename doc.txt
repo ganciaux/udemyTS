@@ -1,4 +1,5 @@
 tsc --init
+tsc -w
 npm install --save express body-parser
 npm install --save-dev nodemon    
 npm install --save-dev @types/node
